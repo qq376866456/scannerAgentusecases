@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "lastCollectedAt": "2026-11-05T07:39:02.581Z",
+  "lastCollectedAt": "2026-11-05T08:04:59.646Z",
   "status": "ok",
   "sources": [
     {
       "id": "hn",
       "name": "Hacker News",
       "status": "ok",
-      "matched": 24,
+      "matched": 25,
       "failed": 0
     },
     {
@@ -20,6 +20,42 @@
   ],
   "translationStatus": "not_configured",
   "items": [
+    {
+      "id": "feed-4575616996d1daa4543e",
+      "originalTitle": "Google's Search Volume Is About 5x ChatGPT's, OpenAI Says",
+      "title": "Google's Search Volume Is About 5x ChatGPT's, OpenAI Says",
+      "source": "https://www.searchenginejournal.com/googles-search-volume-is-about-5x-chatgpts-openai-says/595817/",
+      "sourceName": "Hacker News",
+      "sourceId": "hn",
+      "discussion": "https://news.ycombinator.com/item?id=50376332",
+      "publishedAt": "2026-11-05T07:46:30.000Z",
+      "collectedAt": "2026-11-05T08:04:59.646Z",
+      "type": "采集线索",
+      "agent": "ChatGPT",
+      "category": "研究与学习",
+      "description": "来自 Hacker News 的公开条目。尚未核验实际效果，点击查看原文。",
+      "detail": "自动采集仅使用公开标题、链接与发布时间，没有读取完整文章。该条目可能是工具发布、讨论或实践分享，需要阅读原文判断。",
+      "limit": "自动收录不代表推荐或成功验证；工具和场景标签由标题关键词推断。",
+      "translation": "pending"
+    },
+    {
+      "id": "feed-4007ff9b6bbe0018b010",
+      "originalTitle": "AXI: Host-side state kept an LLM job exact for 1,500 steps pre-registered tests",
+      "title": "AXI: Host-side state kept an LLM job exact for 1,500 steps pre-registered tests",
+      "source": "https://zenodo.org/records/23958737",
+      "sourceName": "Hacker News",
+      "sourceId": "hn",
+      "discussion": "https://news.ycombinator.com/item?id=50376280",
+      "publishedAt": "2026-11-05T07:39:38.000Z",
+      "collectedAt": "2026-11-05T08:04:59.646Z",
+      "type": "采集线索",
+      "agent": "通用智能体",
+      "category": "研究与学习",
+      "description": "来自 Hacker News 的公开条目。尚未核验实际效果，点击查看原文。",
+      "detail": "自动采集仅使用公开标题、链接与发布时间，没有读取完整文章。该条目可能是工具发布、讨论或实践分享，需要阅读原文判断。",
+      "limit": "自动收录不代表推荐或成功验证；工具和场景标签由标题关键词推断。",
+      "translation": "pending"
+    },
     {
       "id": "feed-ef93f1ef6374c6f66fc3",
       "originalTitle": "My Agentic Coding Setup, July 2026 – Domenic Denicola",
