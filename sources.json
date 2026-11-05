@@ -1,0 +1,8 @@
+{
+  "maxItems": 300,
+  "maxAgeDays": 90,
+  "sources": [
+    { "id": "hn", "name": "Hacker News", "type": "hn", "url": "https://hacker-news.firebaseio.com/v0/", "lists": ["showstories", "newstories"], "limit": 100 },
+    { "id": "simon", "name": "Simon Willison", "type": "rss", "url": "https://simonwillison.net/atom/everything/", "limit": 50 }
+  ]
+}

@@ -1,0 +1,74 @@
+name: 采集与发布灵感库
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 北京时间每天 08:23；GitHub 调度可能延迟。
+    - cron: '23 0 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'dist/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'sources.json'
+      - 'zh-titles.json'
+      - 'package*.json'
+      - '.npmrc'
+      - '.github/workflows/refresh.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent-cases-publish
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+          cache: npm
+      - name: 安装依赖
+        timeout-minutes: 3
+        run: npm ci --ignore-scripts
+      - name: 验证采集与合并逻辑
+        run: npm test
+      - name: 采集公开来源
+        env:
+          SUMMARY_API_KEY: ${{ secrets.SUMMARY_API_KEY }}
+          SUMMARY_API_URL: ${{ vars.SUMMARY_API_URL }}
+          SUMMARY_MODEL: ${{ vars.SUMMARY_MODEL }}
+        run: npm run collect
+      - name: 保存增量数据
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add dist/data/feed.json dist/data/feed.js
+          if ! git diff --cached --quiet; then
+            git commit -m '更新公开来源线索'
+            git push
+          fi
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+  deploy:
+    needs: collect
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: 发布静态网站
+        id: deployment
+        uses: actions/deploy-pages@v4

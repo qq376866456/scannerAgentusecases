@@ -1,0 +1,3 @@
+const http=require('http'),fs=require('fs'),path=require('path');
+const root=path.join(__dirname,'dist');
+http.createServer((req,res)=>{const url=new URL(req.url,'http://localhost');const file=path.join(root,url.pathname==='/'?'index.html':url.pathname);if(!file.startsWith(root+path.sep)){res.writeHead(403);return res.end()}fs.readFile(file,(err,data)=>{if(err){res.writeHead(404);return res.end('未找到页面')}res.setHeader('Content-Type',({'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8'})[path.extname(file)]||'application/octet-stream');res.end(data)})}).listen(8765,'127.0.0.1',()=>console.log('本地预览：http://127.0.0.1:8765'));
