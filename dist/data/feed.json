@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
-  "lastCollectedAt": "2026-11-05T07:14:37.741Z",
+  "lastCollectedAt": "2026-11-05T07:39:02.581Z",
   "status": "ok",
   "sources": [
     {
       "id": "hn",
       "name": "Hacker News",
       "status": "ok",
-      "matched": 25,
+      "matched": 24,
       "failed": 0
     },
     {
